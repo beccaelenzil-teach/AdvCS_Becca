@@ -217,15 +217,9 @@ def hostGame():
         elif b.winsFor('X') == True:
             print 'X won!'
             return
-
+"""
 hostGame()
 
-
-
-
-
-
-"""
 
 b = Board(7,6)
 b.addMove(0, 'X')
@@ -285,3 +279,4 @@ b.setBoard( '23344545515' )
 print b
 print b.winsFor('O')
 """
+

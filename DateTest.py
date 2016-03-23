@@ -87,7 +87,7 @@ print "-24 == ", d.diff(d3)
 d = Date(12,1,2015)
 d3 = Date(3,15,2016)
 d3.diff(d)
-print "105 == ",105
+print "105 == ",d3.diff(d)
 
 print " "
 print "--------------------------------------"
