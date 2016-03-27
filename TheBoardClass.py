@@ -135,6 +135,7 @@ class Board:
                    D[row][col+2] == ox and \
                    D[row][col+3] == ox:
                     return True
+
             for col in range(W-1,2,-1):
                 if D[row][col] == ox and \
                    D[row][col-1] == ox and \
@@ -150,14 +151,13 @@ class Board:
                    D[row+2][col] == ox and \
                    D[row+3][col] == ox:
                     return True
+
             for row in range(H-1,2,-1):
                 if D[row][col] == ox and \
                    D[row-1][col] == ox and \
                    D[row-2][col] == ox and \
                    D[row-3][col] == ox:
                     return True
-
-
 
         #check for diagonal negative slope
         for col in range(0,W-3):
