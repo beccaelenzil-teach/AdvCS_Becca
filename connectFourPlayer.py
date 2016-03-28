@@ -1,6 +1,7 @@
-from TheBoardClass import Board as Board
 
 import random
+import sys
+from TheBoardClass import Board
 
 class basicPlayer():
     """a basic player class that selects the next move"""
@@ -65,12 +66,6 @@ class smartPlayer(basicPlayer):
 
         return scores
 
-    def tieBreaker(self,max_index):
-
-        col = max_index[random.choice(range(len(max_index)))]
-
-        return col
-
     def nextMove(self, b):
 
         #score board
@@ -82,10 +77,7 @@ class smartPlayer(basicPlayer):
             if scores[i] == max(scores):
                 max_index.append(i)
 
-        if len(max_index) == 1:
-            col = max_index[0]
-        else:
-            col = self.tieBreaker(max_index)
+        col = random.choice(max_index)
 
         return col
 
@@ -93,14 +85,48 @@ class smartPlayer(basicPlayer):
 def playGame(playerX, playerO):
 
     """
-    playerX should be basicPlayer('X') or smartPlayer('X','LEFT') or
-    smartPlayer('X','RIGHT') or smartPlayer('X','RANDOM') or 'human'
-
-    playerO should be basicPlayer('O') or smartPlayer('O','LEFT') or
-    smartPlayer('O','RIGHT') or smartPlayer('O','RANDOM') or 'human'
+    playerX should be 'basic', 'smart' or 'human'
+    playerO should be 'basic', 'smart' or 'human'
     """
-    pX = playerX
-    pO = playerO
+    if playerX == 'smart':
+        pX = smartPlayer('X')
+    elif playerX == 'basic':
+        pO = basicPlayer('X')
+    elif playerX != 'human':
+        print "Player X should be 'smart', 'basic', or 'human'. Try again!"
+        sys.exit()#def playGame(playerX, playerO):
+
+    """
+    playerX should be 'basic', 'smart' or 'human'
+    playerO should be 'basic', 'smart' or 'human'
+    """
+    if playerX == 'smart':
+        pX = smartPlayer('X')
+    elif playerX == 'basic':
+        pO = basicPlayer('X')
+    elif playerX != 'human':
+        print "Player X should be 'smart', 'basic', or 'human'. Try again!"
+        sys.exit()
+
+    if playerO == 'smart':
+        pX = smartPlayer('O')
+    elif playerO == 'basic':
+        pO = basicPlayer('O')
+    elif playerO != 'human':
+        print "Player O should be 'smart', 'basic', or 'human'. Try again!"
+        sys.exit()
+
+    b = Board(7,6)
+    print b
+
+
+    if playerO == 'smart':
+        pX = smartPlayer('O')
+    elif playerO == 'basic':
+        pO = basicPlayer('O')
+    elif playerO != 'human':
+        print "Player O should be 'smart', 'basic', or 'human'. Try again!"
+        sys.exit()
 
     b = Board(7,6)
     print b
@@ -141,10 +167,10 @@ def playGame(playerX, playerO):
             return 1
 
 players = ['O','X','TRUCE']
-numGames = 10
+numGames = 100
 oxTruce = [0,0,0]
 for i in range(numGames):
-    winner = playGame(basicPlayer('X'),smartPlayer('O'))
+    winner = playGame('smart', 'basic')
     oxTruce[winner] += 1
     #print i
     #print "Game: ",i,"Winner: ",players[winner], '\n'
