@@ -82,51 +82,32 @@ class smartPlayer(basicPlayer):
         return col
 
 
-def playGame(playerX, playerO):
+def playGame(pO, pX):
 
     """
     playerX should be 'basic', 'smart' or 'human'
     playerO should be 'basic', 'smart' or 'human'
     """
-    if playerX == 'smart':
+
+    if pX == 'smart':
         pX = smartPlayer('X')
-    elif playerX == 'basic':
-        pO = basicPlayer('X')
-    elif playerX != 'human':
+    elif pX == 'basic':
+        pX = basicPlayer('X')
+    elif pX != 'human':
         print "Player X should be 'smart', 'basic', or 'human'. Try again!"
         sys.exit()#def playGame(playerX, playerO):
 
-    """
-    playerX should be 'basic', 'smart' or 'human'
-    playerO should be 'basic', 'smart' or 'human'
-    """
-    if playerX == 'smart':
-        pX = smartPlayer('X')
-    elif playerX == 'basic':
-        pO = basicPlayer('X')
-    elif playerX != 'human':
-        print "Player X should be 'smart', 'basic', or 'human'. Try again!"
-        sys.exit()
 
-    if playerO == 'smart':
-        pX = smartPlayer('O')
-    elif playerO == 'basic':
+    if pO == 'smart':
+        pO = smartPlayer('O')
+    elif pO == 'basic':
         pO = basicPlayer('O')
-    elif playerO != 'human':
+    elif pO != 'human':
         print "Player O should be 'smart', 'basic', or 'human'. Try again!"
         sys.exit()
 
-    b = Board(7,6)
-    print b
-
-
-    if playerO == 'smart':
-        pX = smartPlayer('O')
-    elif playerO == 'basic':
-        pO = basicPlayer('O')
-    elif playerO != 'human':
-        print "Player O should be 'smart', 'basic', or 'human'. Try again!"
-        sys.exit()
+    print pO
+    print pX
 
     b = Board(7,6)
     print b
@@ -142,16 +123,16 @@ def playGame(playerX, playerO):
         b.addMove(oCol,'O')
         print b
 
-        if b.isFull() == True:
-            print "Truce"
-            return 2
-        elif b.winsFor('O') == True:
+        if b.winsFor('O') == True:
             print 'O won!'
             return 0
+        elif b.isFull() == True:
+            print "Truce"
+            return 2
 
         xCol = -1
         while b.allowsMove(xCol) == False:
-            if pO == 'human':
+            if pX == 'human':
                 xCol = input("X, Choose a column: ")
             else:
                 xCol = pX.nextMove(b)
@@ -159,24 +140,27 @@ def playGame(playerX, playerO):
         b.addMove(xCol,'X')
         print b
 
-        if b.isFull() == True:
-            print "Truce"
-            return 2
-        elif b.winsFor('X') == True:
+        if b.winsFor('X') == True:
             print 'X won!'
             return 1
+        elif b.isFull() == True:
+            print "Truce"
+            return 2
 
-players = ['O','X','TRUCE']
-numGames = 100
-oxTruce = [0,0,0]
-for i in range(numGames):
-    winner = playGame('smart', 'basic')
-    oxTruce[winner] += 1
+playGame('human','smart')
+
+#players = ['O','X','TRUCE']
+#numGames = 100
+#o_x_truce = [0,0,0]
+#for i in range(numGames):
+#    winner = playGame('smart', 'smart')
+#    o_x_truce[winner] += 1
+
     #print i
     #print "Game: ",i,"Winner: ",players[winner], '\n'
 
-print oxTruce
-#print oxTruce/float(numGames)
+#print o_x_truce
+#print o_x_truce/float(numGames)
 
 #def scoreBoard(self, b):
 #    """

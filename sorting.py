@@ -1,20 +1,50 @@
 __author__ = 'becca.elenzil'
 
-#selection sort
+import matplotlib as plot
 
-def selectionSort(list):
 
-    for k in range(0,len(list)-2):
-        smallestValue = list[k]
-        for i in range(k+1,len(list)):
-            if list[i] < smallestValue:
-                smallestValue = list[i]
-                smallIndex = i
+import matplotlib.pyplot as plt
+from random import shuffle
 
-        list = list[0:k] + [smallestValue] + [list[k]] + list[(smallIndex+1):]
 
-        print list
+plt.ion()
 
-    return list
+def create_random_list(length):
+    some_list = [i for i in range(length)]
+    shuffle(some_list)
+    return some_list
 
-print selectionSort([4,3,6,2, 5, 7, 8, 6, 5, 2, 1, 4, 1])
+def display(some_list):
+    plt.clf()
+    plt.bar(range(len(some_list)),some_list)
+    plt.pause(0.0001)
+    plt.show()
+
+def bubbleSort(some_list):
+    plt.pause(10)
+    sorted = False
+    k = 0
+    while not sorted:
+        sorted = True
+        for i in range(len(some_list)-1):
+            if some_list[i] > some_list[i+1]:
+                some_list[i+1], some_list[i] = some_list[i], some_list[i+1]
+                display(some_list)
+                sorted = False
+            plt.show()
+        #k += 1
+
+bubbleSort(create_random_list(20))
+
+
+"""
+some_list = [2,1,5,3,]
+display(some_list)
+some_list[0], some_list[1] = some_list[1], some_list[0]
+display(some_list)
+some_list[1], some_list[2] = some_list[2], some_list[1]
+display(some_list)
+some_list[0], some_list[1] = some_list[1], some_list[0]
+display(some_list)
+"""
+
