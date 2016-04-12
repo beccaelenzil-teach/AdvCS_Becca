@@ -9,5 +9,6 @@ x = [i for i in range(len(y))]
 
 plt.plot(x,y)
 plt.scatter(x,y)
-plt.bar(x,y)
+#plt.draw()
+#plt.bar(x,y)
 plt.show()
