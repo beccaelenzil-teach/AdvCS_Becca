@@ -53,6 +53,36 @@ class Rational:
                 self.numerator /= n
                 self.denominator /= n
 
+    def gcf(self,a,b):
+        """
+        finds the greatest common factor
+        """
+        if self.numerator >= self.denominator:
+            a = self.numerator
+            b = self.denominator
+        else:
+            b = self.numerator
+            a = self.denominator
+
+"""
+        if self.numerator % self.denominator == 0:
+                return b
+            else:
+                return self.gcf(self.denominator, self.numerator % self.denominator)
+        else:
+            #if a % b == 0:
+            #    return b
+            #else:
+            #    return self.gcf(a, b % a)
+
+r = Rational(46,100)
+print r.gcf()
+
+
+
+
+
+
 def foo():
     r = Rational(1,3)
     for i in range(10):
@@ -62,7 +92,7 @@ def foo():
 def bar(number):
     number.numerator += 1
 
-"""
+
 fuelNeeded = Rational(42,1000)
 tank1 = Rational(36,1000)
 tank2 = Rational(6,1000)
@@ -77,9 +107,10 @@ print str(fuelNeeded)
 r1 = Rational(1,2)
 r2 = Rational(1,2)
 print r1 == r2
-"""
+
 
 r = Rational(20,5)
 r.simplify()
 print r
 print r.denominator
+"""
