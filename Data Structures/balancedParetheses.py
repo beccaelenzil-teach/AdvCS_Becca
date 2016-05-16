@@ -20,12 +20,16 @@ def parenChecker(parenList):
 def balSymChecker(parenList):
     parenStack = Stack()
     openers = "({["
+    closers = ")}]"
 
     for paren in parenList:
         if paren in openers:
             parenStack.push(paren)
-        else:
-            matches(paren,parenStack)
+        elif paren in closers:
+            if parenStack.isEmpty:
+                return False
+            else:
+                matches(paren,parenStack)
 
     if parenStack.isEmpty():
         return True
@@ -34,11 +38,12 @@ def balSymChecker(parenList):
 
 
 def matches(paren,parenStack):
+
     openers = "({["
     closers = ")}]"
 
     for i in range(3):
-        if paren == openers[i] and parenStack.pop() != closers[i]:
+        if parenStack.pop() == openers[i] and paren != closers[i]:
             return False
         elif paren == closers[i]:
             try:
@@ -46,10 +51,11 @@ def matches(paren,parenStack):
             except:
                 return False
 
-"""
+
 print(balSymChecker('{{([][])}()}'))
 print(balSymChecker('[{()]'))
-"""
+print(balSymChecker('[{)]'))
+
 
 def divideByTwo(dec):
     s = Stack()
@@ -65,7 +71,7 @@ def divideByTwo(dec):
 
     return b
 
-print divideByTwo(233)
+#print divideByTwo(233)
 
 
 
