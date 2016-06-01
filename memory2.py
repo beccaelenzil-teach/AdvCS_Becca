@@ -1,5 +1,4 @@
 __author__ = 'becca.elenzil'
-
 import random
 import time
 
@@ -13,7 +12,6 @@ class Card():
         self.col = col
         self.row = row
         self.value = value
-
 
 class Board():
     def __init__(self, size):
@@ -53,9 +51,7 @@ class Board():
                     b += '* | '
                 k+=1
             b += '\n'
-
         print b
-
 
     def playGame(self):
         count = 0
@@ -93,15 +89,12 @@ class Board():
                 print "Rats, that's not a pair. Choose new cards.\n"
                 self.cards[m].turnedOver = False #turn the cards back over if they are not a pair
                 self.cards[n].turnedOver = False #turn the cards back over if they are not a pair
-
             time.sleep(2)
-
 
 def hostGame():
     b = Board(2)
     b.populateBoard()
     b.playGame()
-
 
 hostGame()
 
