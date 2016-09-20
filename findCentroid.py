@@ -67,7 +67,7 @@ screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Centroid Visualization")
 
 done = False
-numCentroids = 6
+numCentroids = 10
 numPoints = 1000
 
 centroids = generateCentroids(numCentroids,WIDTH,HEIGHT)
@@ -80,7 +80,7 @@ for k in range(numCentroids):
 
 pygame.init()
 
-time.sleep(10)
+time.sleep(1)
 
 while True:
     for event in pygame.event.get():
@@ -119,11 +119,7 @@ while True:
             pygame.draw.circle(screen, color, (p.x,p.y), 2)
         k += 1
 
-
-
-
-
-    clock.tick(2)
+    clock.tick(60)
 
     # Go ahead and update the screen with what we've drawn.
     pygame.display.update()
